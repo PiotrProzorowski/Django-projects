@@ -39,8 +39,8 @@ class Board():
     def get_num_neighbouring_bombs(self, row, col):
         # iterate through all neighbouring positions and sum the number of bombs
         num_neighbouring_bombs = 0
-        for r in range(max(0, row-1), min(self.dim_size-1, (row+1)+1)):
-            for c in range(max(0, col-1), min(self.dim_size-1, (col+1)+1)):  # make sure not to go out of bounds
+        for r in range(max(0, row-1), min(self.dim_size-1, row+1)+1):
+            for c in range(max(0, col-1), min(self.dim_size-1, col+1)+1):  # make sure not to go out of bounds
                 if r == row and c == col:
                     continue # skip the oroginal location
                 if self.board[r][c] == "*":
@@ -56,8 +56,8 @@ class Board():
             return True
         
          # when self.board[row][col] == 0
-        for r in range(max(0, row-1), min(self.dim_size-1, (row+1)+1)):
-            for c in range(max(0, col-1), min(self.dim_size-1, (col+1)+1)):
+        for r in range(max(0, row-1), min(self.dim_size-1, row+1)+1):
+            for c in range(max(0, col-1), min(self.dim_size-1, col+1)+1):
                 if (r,c) in self.dug:
                     continue # don't dig visited places
                 self.dig(r, c)
