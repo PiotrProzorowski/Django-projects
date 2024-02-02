@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<style>
+    .main {
+        font-size: 20px;
+    }
+</style>
+<h1 class="mt-2"><center>What does your BMI indicate?</center></h1>
+<div>
+    <center>
+        <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">BMI</th>
+                <th scope="col">Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><16.0</th>
+                <td>Underweight (severe)</td>
+              </tr>
+              <tr>
+                <th scope="row">16.0 - 16.9</th>
+                <td>Underweight (moderate)</td>
+              </tr>
+              <tr>
+                <th scope="row">17.0 - 18.4</th>
+                <td>Underweight (mild)</td>
+              </tr>
+              <tr>
+                <th scope="row">18.5 - 24.9</th>
+                <td>Normal</td>
+              </tr>
+              <tr>
+                <th scope="row">25.0 - 29.9</th>
+                <td>Overweight</td>
+              </tr>
+              <tr>
+                <th scope="row">30.0 - 34.9</th>
+                <td>Obese (Class I)</td>
+              </tr>
+              <tr>
+                <th scope="row">35.0 - 39.9</th>
+                <td>Obese (Class II)</td>
+              </tr>
+              <tr>
+                <th scope="row">≥ 40.0</th>
+                <td>Obese (Class III)</td>
+              </tr>
+            </tbody>
+          </table>
+    </center>
+</div>
+{%endblock%}
