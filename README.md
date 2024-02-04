@@ -1,1 +1,3 @@
-This is a simple command-line version of minesweeper.
+This repository includes my django projects.
+
+The first project is a simple BMI calculator.
