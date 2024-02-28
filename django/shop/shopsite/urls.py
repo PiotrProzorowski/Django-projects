@@ -12,9 +12,9 @@ urlpatterns = [
     path("account/", views.account, name="account"),
     path("watches/", views.watches, name="watches"),
     path("perfume/", views.perfume, name="perfume"),
-    path("ties/", views.perfume, name="ties"),
-    path("rings/", views.perfume, name="rings"),
-    path("necklaces/", views.perfume, name="necklaces"),
-    path("shoes/", views.perfume, name="shoes"),
-    path("candles/", views.perfume, name="candles")
+    path("ties/", views.ties, name="ties"),
+    path("rings/", views.rings, name="rings"),
+    path("necklaces/", views.necklaces, name="necklaces"),
+    path("shoes/", views.shoes, name="shoes"),
+    path("candles/", views.candles, name="candles")
 ]

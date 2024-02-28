@@ -2,11 +2,12 @@
             margin-top: 20px;
             padding: 5%;
             display: flex;
+            justify-content: space-between;
         }
         .col {
+            width: 25%;
             text-align: center;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-            flex: 1;
             margin: 0 30px;
             padding: 0;
         }
@@ -15,7 +16,8 @@
             height: 200px;
         }
         .card {
-            text-align: center;  
+            text-align: center;
+            width: 100%;
         }
         .tag {
             display: flex;

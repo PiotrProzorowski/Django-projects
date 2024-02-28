@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from .models import *
 # Create your views here.
 
 def home(request):
@@ -15,32 +16,55 @@ def sale(request):
     return render(request, "shopsite/sale.html")
 
 def cart(request):
-    return render(request, "shopsite/cart.html")
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items": 0}
+
+    return render(request, "shopsite/cart.html", {"items": items, "order": order})
 
 def checkout(request):
-    return render(request, "shopsite/checkout.html")
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items": 0}
+
+    return render(request, "shopsite/checkout.html", {"items": items, "order": order})
 
 def account(request):
     return render(request, "shopsite/account.html")
 
 def watches(request):
-    return render(request, "shopsite/watches.html")
+    watches = Product.objects.filter(category="watches")
+    return render(request, "shopsite/watches.html", {"products": watches})
 
 def perfume(request):
-    return render(request, "shopsite/perfume.html")
+    perfume = Product.objects.filter(category="perfume")
+    return render(request, "shopsite/perfume.html", {"products": perfume})
 
 def candles(request):
-    return render(request, "shopsite/candles.html")
+    candles = Product.objects.filter(category="candles")
+    return render(request, "shopsite/candles.html", {"products": candles})
 
 def necklaces(request):
-    return render(request, "shopsite/necklaces.html")
+    necklaces = Product.objects.filter(category="necklaces")
+    return render(request, "shopsite/necklaces.html", {"products": necklaces})
 
 def shoes(request):
-    return render(request, "shopsite/shoes.html")
+    shoes = Product.objects.filter(category="shoes")
+    return render(request, "shopsite/shoes.html", {"products": shoes})
 
 def rings(request):
-    return render(request, "shopsite/rings.html")
+    rings = Product.objects.filter(category="rings")
+    return render(request, "shopsite/rings.html", {"products": rings})
 
 def ties(request):
-    return render(request, "shopsite/ties.html")
+    ties = Product.objects.filter(category="ties")
+    return render(request, "shopsite/ties.html", {"products": ties})
 

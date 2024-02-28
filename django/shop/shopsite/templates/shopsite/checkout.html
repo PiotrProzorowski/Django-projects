@@ -41,6 +41,21 @@
         .btn-secondary:hover {
             background-color: rgb(88, 144, 27);
         }
+        .my-cart {
+            display: flex;
+            align-items: center;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            position: relative;
+        }
+        .my-cart > div {
+            flex: 1;
+            text-align: center;
+        }
+        .item-mini-thumb {
+            width: 60px;
+            height: 40px;
+        }
     </style>
 </head>
 
@@ -107,10 +122,21 @@
                 <h3>Order summary</h3>
             </div>
             <a href="/cart" class="btn btn-outline-secondary">&#x2190; Back to the cart</a>
+            <hr>
+            {% for item in items %}
+            <div class="my-cart">
+                <div><img src="{% static 'images/placeholder_item.png' %}" class="item-mini-thumb"></div>
+                <div>{{item.product.name}}</div>   
+                <div>${{item.product.price|floatformat:2}}</div>   
+                <div class="quantity">
+                    x{{item.quantity}}
+                </div>
+            </div>
+            {% endfor %}
             <div class="list">
-                <h5>Items:</h5>
+                <h5>Items: {{order.get_cart_items}}</h5>
                 <hr>
-                <h5>Total:</h5>
+                <h5>Total: ${{order.get_cart_total|floatformat:2}}</h5>
             </div>
             </table>
         </div>

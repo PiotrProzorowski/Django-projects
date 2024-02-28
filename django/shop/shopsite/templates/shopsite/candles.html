@@ -6,14 +6,17 @@
 </head>
 
 <body>
-    <div class="row">
+    {% for product in products %}
+        {% if forloop.counter0|divisibleby:3 %}
+            <div class="row">
+        {% endif %}
         <div class="col">
             <img class="thumbnail" src="{% static 'images/placeholder_item.png' %}">
             <div class="card">
                 <div class="tag">
                     <div class="tag-content">
-                        <h5>Item</h5>
-                        <p>Price: $20</p>
+                        <h5>{{ product.name }}</h5>
+                        <p>${{ product.price|floatformat:2 }}</p>
                     </div>
                     <div class="tag-buttons">
                         <button class="btn btn-outline-secondary">Add to cart</button>
@@ -22,35 +25,9 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <img class="thumbnail" src="{% static 'images/placeholder_item.png' %}">
-            <div class="card">
-                <div class="tag">
-                    <div class="tag-content">
-                        <h5>Item</h5>
-                        <p>Price: $20</p>
-                    </div>
-                    <div class="tag-buttons">
-                        <button class="btn btn-outline-secondary">Add to cart</button>
-                        <button class="btn btn-outline-secondary">View</button>
-                    </div>
-                </div>
+        {% if forloop.counter|divisibleby:3 or forloop.last %}
             </div>
-        </div>
-        <div class="col">
-            <img class="thumbnail" src="{% static 'images/placeholder_item.png' %}">
-            <div class="card">
-                <div class="tag">
-                    <div class="tag-content">
-                        <h5>Item</h5>
-                        <p>Price: $20</p>
-                    </div>
-                    <div class="tag-buttons">
-                        <button class="btn btn-outline-secondary">Add to cart</button>
-                        <button class="btn btn-outline-secondary">View</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endif %}
+    {% endfor %}
 </body>
 {% endblock %}
