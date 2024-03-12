@@ -19,7 +19,7 @@
                         <p>${{ product.price|floatformat:2 }}</p>
                     </div>
                     <div class="tag-buttons">
-                        <button class="btn btn-outline-secondary">Add to cart</button>
+                        <button data-product={{product.id}} data-action=add class="btn btn-outline-secondary update-cart">Add to cart</button>
                         <button class="btn btn-outline-secondary">View</button>
                     </div>
                 </div>

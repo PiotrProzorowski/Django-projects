@@ -38,8 +38,8 @@
             text-align: center;
         }
         .item-mini-thumb {
-            width: 60px;
-            height: 40px;
+            width: 80px;
+            height: 60px;
         }
         .arrow {
             height: 10px;
@@ -76,13 +76,13 @@
             </div>
             {% for item in items %}
             <div class="my-cart">
-                <div><img src="{% static 'images/placeholder_item.png' %}" class="item-mini-thumb"></div>
+                <div><img src="{{item.product.image.url}}" class="item-mini-thumb"></div>
                 <div>{{item.product.name}}</div>   
                 <div>${{item.product.price|floatformat:2}}</div>   
                 <div class="quantity">
                     {{item.quantity}}
-                    <i><img class="arrow" src="{%static 'images/arrow_up.png' %}"></i>
-                    <i><img class="arrow" src="{%static 'images/arrow_down.png' %}"></i>
+                    <i><img data-product={{item.product.id}} data-action="add" class="arrow update-cart" src="{%static 'images/arrow_up.png' %}"></i>
+                    <i><img data-product={{item.product.id}} data-action="remove" class="arrow update-cart" src="{%static 'images/arrow_down.png' %}"></i>
                 </div>      
                 <div>${{item.get_total}}</div>
             </div>
