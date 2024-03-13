@@ -3,54 +3,40 @@
 {% block content %}
 <head>
     <link rel="stylesheet" href="{% static 'css/categories.css' %}">
+    <style>
+    .welcome {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+       }
+
+    </style>
 </head>
 
 <body>
-    <div class="row">
+    <div class="welcome"><h1>Explore the newest products in MyShop!</h1></div>
+    {% for product in products %}
+        {% if forloop.counter0|divisibleby:3 %}
+            <div class="row">
+        {% endif %}
         <div class="col">
-            <img class="thumbnail" src="{% static 'images/placeholder_item.png' %}">
+            <img class="thumbnail" src="{{product.image.url}}">
             <div class="card">
                 <div class="tag">
                     <div class="tag-content">
-                        <h5>Item</h5>
-                        <p>Price: $20</p>
+                        <h5>{{ product.name }}</h5>
+                        <p>${{ product.price|floatformat:2 }}</p>
                     </div>
                     <div class="tag-buttons">
-                        <button class="btn btn-outline-secondary">Add to cart</button>
+                        <button data-product={{product.id}} data-action=add class="btn btn-outline-secondary update-cart">Add to cart</button>
                         <button class="btn btn-outline-secondary">View</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <img class="thumbnail" src="{% static 'images/placeholder_item.png' %}">
-            <div class="card">
-                <div class="tag">
-                    <div class="tag-content">
-                        <h5>Item</h5>
-                        <p>Price: $20</p>
-                    </div>
-                    <div class="tag-buttons">
-                        <button class="btn btn-outline-secondary">Add to cart</button>
-                        <button class="btn btn-outline-secondary">View</button>
-                    </div>
-                </div>
+        {% if forloop.counter|divisibleby:3 or forloop.last %}
             </div>
-        </div>
-        <div class="col">
-            <img class="thumbnail" src="{% static 'images/placeholder_item.png' %}">
-            <div class="card">
-                <div class="tag">
-                    <div class="tag-content">
-                        <h5>Item</h5>
-                        <p>Price: $20</p>
-                    </div>
-                    <div class="tag-buttons">
-                        <button class="btn btn-outline-secondary">Add to cart</button>
-                        <button class="btn btn-outline-secondary">View</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endif %}
+    {% endfor %}
 </body>
 {% endblock %}

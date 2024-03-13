@@ -11,10 +11,13 @@ def categories(request):
     return render(request, "shopsite/categories.html")
 
 def new(request):
-    return render(request, "shopsite/new.html")
+    new = Product.objects.filter(category="new")
+    return render(request, "shopsite/new.html", {"products": new})
 
 def sale(request):
-    return render(request, "shopsite/sale.html")
+    sale = Product.objects.filter(category="sale")
+    return render(request, "shopsite/sale.html", {"products": sale})
+
 
 def cart(request):
     if request.user.is_authenticated:
